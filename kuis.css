@@ -1,0 +1,121 @@
+body {
+    background: linear-gradient(135deg, #2193b0 0%, #6dd5ed 100%);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+}
+.container {
+    max-width: 400px;
+    margin: 40px auto;
+    background: #e3f6fd;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    padding: 32px 24px 24px 24px;
+    text-align: center;
+    position: relative;
+}
+h1 {
+    font-size: 2.2em;
+    margin-bottom: 10px;
+    color: #2193b0;
+    letter-spacing: 1px;
+}
+#quiz-box {
+    margin-top: 18px;
+}
+#question-number {
+    font-size: 1.1em;
+    color: #1976d2;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+#question-text {
+    font-size: 1.25em;
+    margin-bottom: 18px;
+    color: #333;
+}
+#options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+#options button {
+    background: #b3e5fc;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.2s;
+    box-shadow: 0 2px 8px rgba(33, 147, 176, 0.08);
+}
+#options button:hover, #options button.selected {
+    background: #4fc3f7;
+    font-weight: bold;
+}
+#next-btn {
+    background: linear-gradient(90deg, #2193b0 0%, #6dd5ed 100%);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 32px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: background 0.2s, transform 0.2s;
+    box-shadow: 0 2px 8px rgba(33, 147, 176, 0.12);
+}
+#next-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+#timer {
+    font-size: 1.1em;
+    color: #2193b0;
+    margin-top: 8px;
+    font-weight: bold;
+}
+#result-box {
+    margin-top: 24px;
+    padding: 20px 0;
+    background: #e1f5fe;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(33, 147, 176, 0.08);
+}
+#result-box h2 {
+    font-size: 1.6em;
+    color: #1976d2;
+    margin-bottom: 8px;
+}
+#score-text {
+    font-size: 1.3em;
+    color: #2193b0;
+    margin-bottom: 16px;
+}
+#result-box button {
+    background: linear-gradient(90deg, #2193b0 0%, #6dd5ed 100%);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 28px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background 0.2s;
+}
+.hidden {
+    display: none;
+}
+/* Doorprize emoji confetti */
+.confetti {
+    font-size: 2em;
+    position: absolute;
+    left: 0; right: 0; top: -30px;
+    width: 100%;
+    text-align: center;
+    pointer-events: none;
+    user-select: none;
+}

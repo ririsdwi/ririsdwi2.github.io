@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎉 Kuis Interaktif 🎁</title>
+  <link rel="stylesheet" href="kuis.css">
+</head>
+
+  <div class="container">
+    <div class="confetti">🎉🎁✨🎊</div>
+    <h1>🎉 Kuis Pengetahuan Umum 🎁</h1>
+    <div id="quiz-box">
+      <div id="question-number">Pertanyaan 1</div>
+      <div id="question-text">Loading...</div>
+      <div id="options"></div>
+      <button id="next-btn" disabled>Selanjutnya 🚀</button>
+      <div id="timer">⏰ Waktu: 15</div>
+    </div>
+    <div id="result-box" class="hidden">
+      <h2>🎊 Skor Akhir: 🎊</h2>
+      <p id="score-text"></p>
+      <div style="font-size:2em; margin-bottom:10px;">🎁🎉✨</div>
+      <button onclick="location.reload()">Coba Lagi 🔄</button>
+      <button onclick="window.location.href='index.html'">Kembali ke Beranda 🏠</button>
+    </div>
+  </div>
+
+  <script src="kuis.js"></script>
+</body>
+</html>
