@@ -1,3 +1,93 @@
+ const backsound = document.getElementById('backsound');
+    const audioBenar = document.getElementById('audio-benar');
+    const audioSalah = document.getElementById('audio-salah');
+    const volumeSlider = document.getElementById('backsound-volume');
+    backsound.volume = volumeSlider.value;
+    audioBenar.volume = 1;
+    audioSalah.volume = 1;
+
+    // Music visualizer
+    const visualizer = document.getElementById('music-visualizer');
+    function updateVisualizer(on) {
+      if (on) {
+        visualizer.classList.remove('off');
+      } else {
+        visualizer.classList.add('off');
+      }
+    }
+    updateVisualizer(true);
+
+    // Play backsound after user interaction (for autoplay policy)
+    function enableAudio() {
+      backsound.play().catch(()=>{});
+      audioBenar.load();
+      audioSalah.load();
+      document.body.removeEventListener('click', enableAudio);
+      document.body.removeEventListener('keydown', enableAudio);
+    }
+    document.body.addEventListener('click', enableAudio);
+    document.body.addEventListener('keydown', enableAudio);
+
+    // Expose play sound functions for kuis.js
+    window.playBenar = function() {
+      audioSalah.pause();
+      audioSalah.currentTime = 0;
+      audioBenar.pause();
+      audioBenar.currentTime = 0;
+      audioBenar.play().catch(()=>{});
+      let confetti = document.querySelector('.confetti');
+      confetti.style.animation = 'none';
+      confetti.offsetHeight;
+      confetti.style.animation = 'confetti-pop 0.7s';
+      setTimeout(()=>{confetti.style.animation='';},700);
+    }
+    window.playSalah = function() {
+      audioBenar.pause();
+      audioBenar.currentTime = 0;
+      audioSalah.pause();
+      audioSalah.currentTime = 0;
+      audioSalah.play().catch(()=>{});
+    }
+
+    // Toggle backsound on/off
+    const toggleBtn = document.getElementById('toggle-backsound');
+    let backsoundOn = true;
+    toggleBtn.addEventListener('click', function() {
+      if (backsoundOn) {
+        backsound.pause();
+        toggleBtn.textContent = '🔇 Nyalakan Musik';
+        updateVisualizer(false);
+      } else {
+        backsound.play().catch(()=>{});
+        toggleBtn.textContent = '🔊 Matikan Musik';
+        updateVisualizer(true);
+      }
+      backsoundOn = !backsoundOn;
+    });
+
+    // Volume control
+    volumeSlider.addEventListener('input', function() {
+      backsound.volume = this.value;
+    });
+
+    // Pause backsound when window/tab is not active
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        backsound.pause();
+        updateVisualizer(false);
+      } else if (backsoundOn) {
+        backsound.play().catch(()=>{});
+        updateVisualizer(true);
+      }
+    });
+
+    // Confetti click animation
+    document.querySelector('.confetti').addEventListener('click', function() {
+      this.style.animation = 'none';
+      this.offsetHeight;
+      this.style.animation = 'confetti-pop 0.7s';
+      setTimeout(()=>{this.style.animation='confetti-float 2.5s infinite alternate';},700);
+    });
 const questions = [
     {
       question: "Apa ibu kota Indonesia?",
